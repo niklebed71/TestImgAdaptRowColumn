@@ -1,0 +1,292 @@
+
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	min-width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+.container{
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+/*блок с двумя фоновыми картинками */
+.content{
+	display: flex;
+	max-width: 100%;
+	overflow: hidden;
+	margin:50px 0px 0px 0px;
+	flex: 0 1 auto;
+}
+.content__block{
+	flex: 0 1 50%;
+	background-color: aqua;
+	width: 500px;
+	height: 500px;
+}
+.image__up {
+	background: url(../img/picture/03.png) center/cover no-repeat;
+	height: 100%;
+	min-width: 100%;
+	border: red 3px solid;
+   }
+   .image__down {
+	background: url(../img/picture/07.png) center/cover no-repeat;
+	height: 100%;
+	min-width: 100%;
+	border: green 3px solid;
+   }
+   /*header фон картинка header__img на ней меню или знак бургера*/
+.header {
+	min-width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0; 
+   }
+	.header__img {
+	flex: 0 0 100%;
+	position: relative; 
+	background: url(../img/fon/bg_2.png) center/cover no-repeat;
+	height: 100%;
+	}
+.header__list{
+	display: flex;
+	justify-content: space-around;
+	padding: 20px 0 0 0;
+}
+.header__link{
+	font-size: 40px;
+}
+/*---text img и текст в колонке------ */
+/**/
+.text {
+	max-width: 100%;
+	overflow: hidden;
+	margin:50px 0px 0px 0px;
+	background-color: burlywood;
+}
+.text__row {
+	display: flex;
+}
+.text__blog {
+	flex: 0 1 33%; 
+	padding: 5px;
+}/*padding: 0 0 58% 0; можно подобрать как лучше картинки вписываются*/
+.text__img {
+	overflow: hidden;
+	position: relative;
+	padding: 0 0 58% 0;
+}/* */
+.text__img img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.text__text p{
+	font-size: 20px;
+}
+
+/*---row img и текст ----- */
+/**/
+.row {
+}
+.row__row {
+}
+.row__blog {
+	display: flex;	
+	margin: 20px 0;
+	
+}
+.row__img {
+	flex: 0 0 33%;
+	position: relative;
+	margin:0px 20px 0px 0px;
+	min-height: 250px;
+	
+
+}
+.row__img img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.row__text p{
+	font-size: 20px;
+}
+@media (max-width: 500px) {
+	.row__blog {
+	flex-direction: column;	
+	margin:5px 5px;
+	}
+	.row__img {
+		margin:20px 0px;
+	}
+}
+@media (min-width: 1300px) {
+	.row__img {
+		flex: 0 0 40%;
+		position: relative;
+		margin:0px 20px 0px 0px;
+		min-height: 350px;
+	}
+}
+/*---burger------ */
+@media (max-width:767px){
+	.header__burger {
+		display: block;
+		position: fixed; 
+		top: 30px;
+		right: 30px;
+		width: 30px;
+		height: 20px;
+		z-index: 3;
+	}
+	.header__burger span{
+		position: absolute;
+		background-color:black;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		top: 9px;
+		transition: all 0.3s ease 0s;
+	}
+	.header__burger:before,
+	.header__burger:after{
+		content: '';
+		background-color: black;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		transition: all 0.3s ease 0s;
+	}
+	.header__burger:before{
+		top: 0;
+	}
+	.header__burger:after{
+		bottom: 0;
+	}
+	.header__burger.active span{
+		transform: scale(0);
+	}
+	.header__burger.active:before{
+		transform:rotate(45deg);
+		top: 9px;
+	}
+	.header__burger.active:after{
+		transform:rotate(-45deg);
+		bottom: 9px;
+	} 
+.header__menu {
+		position: fixed;
+		top: -100%;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		transition: all 0.3s ease 0s;
+		background-color: #18b5a4;
+		padding: 70px 10px 20px 10px;
+	}
+	.header__menu.active{
+		top: 0;
+		z-index: 2;
+	}
+	.header__list{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		
+	}
+}
+/*=============footer====================*/
+.footer {
+	background-color: #f7f7f7;
+	padding: 100px 0; }
+	.footer-container{
+	  padding:0px 15px;
+	}
+	.footer__row {
+	  display: flex;
+	  font-size: 0;
+	  align-items: center; 
+	 padding: 0 10px;
+	}
+	.footer__column {
+	  flex: 0 1 33.333%; }
+	.footer__address {
+	  padding: 0px 20px 0px 0px;
+	  color: #848789;
+	  font-size: 14px;
+	  line-height: 18px; }
+	  .footer__address p:first-child {
+		font-weight: 700; }
+	  .social {
+		  display: flex;
+		  font-size: 0;
+		  justify-content: center;
+		  align-items: center; }
+		  .social__link {
+			margin: 0px 7.5px; }
+	  .dev {
+		  display: flex;
+		  font-size: 0;
+		  align-items: center;
+		  justify-content: flex-end; }
+	  .dev__text {
+			color: #848789;
+			font-size: 14px;
+			font-style: italic;
+			padding: 0px 9px 0px 0px; }
+	@media (max-width: 1100px) {
+	  .footer {
+		padding: 50px 0; } }
+	@media (max-width: 600px) {
+	  .footer {
+		padding: 30px 0; }
+		.footer__row {
+		  flex-direction: column;
+		  text-align: center; }
+		.footer__address {
+		  padding: 0; }
+		.footer__social {
+		  margin: 15px 0; } }
